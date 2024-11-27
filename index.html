@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1 class="app-title">Weather App</h1>
+    <div class="search-bar">
+        <input type="text" id="cityInput" placeholder="Enter city name..." />
+        <button id="searchBtn">Search</button>
+    </div>
+    <div id="loading" class="loading" style="display: none;">Loading...</div>
+    <div id="weatherData"></div>
+    <div id="forecast" class="forecast"></div>
+    
+    <h2>Favorite Cities</h2>
+    <div id="savedCities" class="saved-cities-container"></div>
+    
+    <h2>Customize Styles 
+        <span id="styleSettingsIcon" style="cursor:pointer;">⚙️</span>
+    </h2>
+</div>
+
+<div id="styleSettingsDialog" class="settings-dialog">
+    <div class="dialog-content">
+        <span class="close">&times;</span>
+        <h2>Customize Styles</h2>
+        <label for="bgColor">Background Color:</label>
+        <input type="color" id="bgColor" />
+        <label for="textColor">Text Color:</label>
+        <input type="color" id="textColor" />
+        <button id="saveSettings">Save</button>
+        <button id="cancelSettings">Cancel</button>
+    </div>
+</div>
+
+
+<div id="duplicateCityAlert" class="notification-dialog">
+    <div class="dialog-content">
+        <span class="close">&times;</span>
+        <h2>Already Added City!!!</h2>
+        <p>This city is already in your favorite cities.</p>
+        <button id="okDuplicate">OK</button>
+    </div>
+</div>
+
+<div id="citySearchError" class="notification-dialog">
+    <div class="dialog-content">
+        <span class="close">&times;</span>
+        <h2>City Search Error</h2>
+        <p>Please enter a valid city name.</p>
+        <button id="backToSearch">Back to Search</button>
+    </div>
+</div>
+
+
+<div id="cityAddedDialog" class="notification-dialog">
+    <div class="dialog-content">
+        <span class="close">&times;</span>
+        <h2>City Added</h2>
+        <p>The city has been added to your favorites!</p>
+        <button id="okAdded">OK</button>
+    </div>
+</div>
+
+
+<div id="cityRemovedDialog" class="notification-dialog">
+    <div class="dialog-content">
+        <span class="close">&times;</span>
+        <h2>City Removed</h2>
+        <p>The city has been removed from your favorites.</p>
+        <button id="okRemoved">OK</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
