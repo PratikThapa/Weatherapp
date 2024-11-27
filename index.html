@@ -12,8 +12,8 @@
 <div class="container">
     <h1 class="app-title">Weather App</h1>
     <div class="search-bar">
-        <input type="text" id="cityInput" placeholder="Enter city name..." />
-        <button id="searchBtn">Search</button>
+        <input type="text" id="cityInput" placeholder="Enter city name..." aria-label="City name input" />
+        <button id="searchBtn" aria-label="Search">Search</button>
     </div>
     <div id="loading" class="loading" style="display: none;">Loading...</div>
     <div id="weatherData"></div>
@@ -23,59 +23,56 @@
     <div id="savedCities" class="saved-cities-container"></div>
     
     <h2>Customize Styles 
-        <span id="styleSettingsIcon" style="cursor:pointer;">⚙️</span>
+        <span id="styleSettingsIcon" style="cursor:pointer;" aria-label="Open style settings">⚙️</span>
     </h2>
 </div>
 
 <div id="styleSettingsDialog" class="settings-dialog">
     <div class="dialog-content">
-        <span class="close">&times;</span>
+        <span class="close" aria-label="Close settings dialog">&times;</span>
         <h2>Customize Styles</h2>
         <label for="bgColor">Background Color:</label>
-        <input type="color" id="bgColor" />
+        <input type="color" id="bgColor" aria-label="Select background color" />
         <label for="textColor">Text Color:</label>
-        <input type="color" id="textColor" />
-        <button id="saveSettings">Save</button>
-        <button id="cancelSettings">Cancel</button>
+        <input type="color" id="textColor" aria-label="Select text color" />
+        <button id="saveSettings" aria-label="Save settings">Save</button>
+        <button id="cancelSettings" aria-label="Cancel settings">Cancel</button>
     </div>
 </div>
 
-
 <div id="duplicateCityAlert" class="notification-dialog">
     <div class="dialog-content">
-        <span class="close">&times;</span>
+        <span class="close" aria-label="Close duplicate city alert">&times;</span>
         <h2>Already Added City!!!</h2>
         <p>This city is already in your favorite cities.</p>
-        <button id="okDuplicate">OK</button>
+        <button id="okDuplicate" aria-label="OK">OK</button>
     </div>
 </div>
 
 <div id="citySearchError" class="notification-dialog">
     <div class="dialog-content">
-        <span class="close">&times;</span>
+        <span class="close" aria-label="Close city search error dialog">&times;</span>
         <h2>City Search Error</h2>
         <p>Please enter a valid city name.</p>
-        <button id="backToSearch">Back to Search</button>
+        <button id="backToSearch" aria-label="Return to search">Back to Search</button>
     </div>
 </div>
-
 
 <div id="cityAddedDialog" class="notification-dialog">
     <div class="dialog-content">
-        <span class="close">&times;</span>
+        <span class="close" aria-label="Close city added dialog">&times;</span>
         <h2>City Added</h2>
         <p>The city has been added to your favorites!</p>
-        <button id="okAdded">OK</button>
+        <button id="okAdded" aria-label="OK">OK</button>
     </div>
 </div>
 
-
 <div id="cityRemovedDialog" class="notification-dialog">
     <div class="dialog-content">
-        <span class="close">&times;</span>
+        <span class="close" aria-label="Close city removed dialog">&times;</span>
         <h2>City Removed</h2>
         <p>The city has been removed from your favorites.</p>
-        <button id="okRemoved">OK</button>
+        <button id="okRemoved" aria-label="OK">OK</button>
     </div>
 </div>
 

@@ -12,7 +12,7 @@ let favoriteCitiesList = JSON.parse(localStorage.getItem('favoriteCities')) || [
 $('#searchBtn').click(function () {
     const city = cityInput.val().trim();
     if (!/^[a-zA-Z\s]+$/.test(city)) {
-        $('#citySearchError').show(); // Show error dialog
+        $('#citySearchError').find('p').text('Please enter a valid city name.').end().show(); 
         return;
     }
     fetchWeatherData(city);
@@ -23,6 +23,7 @@ function fetchWeatherData(city) {
     loading.show();
     weatherData.hide();
     forecast.hide();
+    $('#searchBtn').prop('disabled', true); 
     $.ajax({
         url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`,
         method: 'GET',
@@ -30,11 +31,16 @@ function fetchWeatherData(city) {
             displayWeather(data);
             fetchForecast(city);
         },
-        error: function () {
-            $('#citySearchError').show(); // Show error dialog
+        error: function (jqXHR) {
+            if (jqXHR.status === 404) {
+                $('#citySearchError').find('p').text('City not found. Please try again.').end().show();
+            } else {
+                $('#citySearchError').find('p').text('An error occurred. Please try later.').end().show();
+            }
         },
         complete: function () {
             loading.hide();
+            $('#searchBtn').prop('disabled', false); 
         }
     });
 }
@@ -63,7 +69,7 @@ function fetchForecast(city) {
             displayForecast(data);
         },
         error: function () {
-            $('#citySearchError').show(); // Show error dialog
+            $('#citySearchError').find('p').text('An error occurred while fetching the forecast.').end().show();
         }
     });
 }
@@ -108,7 +114,7 @@ $('#styleSettingsIcon').click(function() {
 
 // Close the dialogs
 $(document).on('click', '.close', function() {
-    $(this).closest('.dialog-content').parent().hide(); // Hide the parent dialog
+    $(this).closest('.dialog-content').parent().hide();
 });
 
 // Add to favorite cities
@@ -118,7 +124,7 @@ $(document).on('click', '.addFavorite', function () {
         favoriteCitiesList.push(city);
         localStorage.setItem('favoriteCities', JSON.stringify(favoriteCitiesList));
         updateFavoriteCities();
-        $('#cityAddedDialog').show(); // Show added dialog
+        $('#cityAddedDialog').show();
     } else {
         $('#duplicateCityAlert').show(); 
     }
@@ -130,7 +136,7 @@ $(document).on('click', '.removeFavorite', function () {
     favoriteCitiesList = favoriteCitiesList.filter(fav => fav !== city);
     localStorage.setItem('favoriteCities', JSON.stringify(favoriteCitiesList));
     updateFavoriteCities();
-    $('#cityRemovedDialog').show(); // Show removed dialog
+    $('#cityRemovedDialog').show(); 
 });
 
 // Load favorite cities on page load
@@ -146,7 +152,7 @@ $('#saveSettings').click(function () {
     localStorage.setItem('--text-color', textColor);
     document.documentElement.style.setProperty('--bg-color', bgColor);
     document.documentElement.style.setProperty('--text-color', textColor);
-    $('#styleSettingsDialog').hide(); // Hide dialog after saving
+    $('#styleSettingsDialog').hide(); 
 });
 
 // Handle duplicate city alert dialog
@@ -167,4 +173,9 @@ $('#okRemoved').click(function() {
 // Handle error dialog to return to search
 $('#backToSearch').click(function() {
     $('#citySearchError').hide();
+});
+
+// Cancel button functionality for style settings
+$('#cancelSettings').click(function() {
+    $('#styleSettingsDialog').hide(); // Hide dialog on cancel
 });
