@@ -1,0 +1,169 @@
+:root {
+    --bg-color: #037c6e; /* Clear white background */
+    --card-bg-color: #ffffff; /* White card background */
+    --text-color: #000000; 
+    --button-bg-color: #00796b; 
+    --button-text-color: #ffffff; 
+    --button-hover-bg-color: #004d40; 
+    --input-border-color: #ccc; 
+    --input-bg-color: #f9f9f9; 
+    --dialog-bg-color: #ffffff; 
+    --dialog-shadow: rgba(0, 0, 0, 0.2); 
+    --font-family: 'Arial', sans-serif; 
+    --font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="color"], select {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 4px;
+    width: calc(100% - 20px);
+    max-width: 300px; 
+}
+
+button {
+    padding: 10px 15px;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.2s;
+    width: 100%; 
+    max-width: 150px; 
+    margin-top: 10px; /* Space between input and button */
+}
+
+button:hover {
+    background-color: var(--button-hover-bg-color);
+    box-shadow: 0 2px 5px var(--dialog-shadow);
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping of items */
+    justify-content: center; /* Center items */
+    margin-top: 20px;
+}
+
+.card {
+    background-color: var(--card-bg-color);
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px;
+    margin: 10px;
+    width: calc(100% - 20px); 
+    max-width: 300px; 
+    box-shadow: 0 2px 5px var(--dialog-shadow);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s; 
+}
+
+.card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.favorite-item {
+    display: flex;
+    justify-content: space-between; /* Align items */
+    align-items: center; /* Center vertically */
+    padding: 10px;
+}
+
+.favorite-item button {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.2s;
+}
+
+.favorite-item button:hover {
+    background-color: var(--button-hover-bg-color);
+    box-shadow: 0 2px 5px var(--dialog-shadow);
+}
+
+/* Styles for the dialog buttons */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.dialog-content {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 50%; 
+    top: 50%; 
+    transform: translate(-50%, -50%);
+    background-color: var(--dialog-bg-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px var(--dialog-shadow);
+    width: 90%;
+    max-width: 500px; 
+}
+
+.close {
+    cursor: pointer;
+    float: right;
+    font-size: 20px;
+}
+
+.dialog-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.dialog-content label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+h2 {
+    text-align: center; /* Center align titles */
+    margin-top: 20px;  /* Spacing above the titles */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    input[type="text"], button {
+        width: 100%; 
+        max-width: none; 
+    }
+}
