@@ -1,8 +1,8 @@
 :root {
-    --bg-color: #037c6e; /* Clear white background */
-    --card-bg-color: #ffffff; /* White card background */
+    --bg-color: #037c6e; 
+    --card-bg-color: #ffffff; 
     --text-color: #000000; 
-    --button-bg-color: #00796b; 
+    --button-bg-color: #2B547E; 
     --button-text-color: #ffffff; 
     --button-hover-bg-color: #004d40; 
     --input-border-color: #ccc; 
