@@ -1,184 +1,169 @@
 :root {
-    --bg-color: #e0f7fa;
-    --text-color: #004d40;
-    --button-bg: #00796b;
-    --button-color: white;
-    --error-color: red;
-    --card-bg: rgba(255, 255, 255, 0.9);
+    --bg-color: #ffffff;
+    --card-bg-color: #ffffff; 
+    --text-color: #000000; 
+    --button-bg-color: #00796b; 
+    --button-text-color: #ffffff; 
+    --button-hover-bg-color: #004d40; 
+    --input-border-color: #ccc; 
+    --input-bg-color: #f9f9f9; 
+    --dialog-bg-color: #ffffff; 
+    --dialog-shadow: rgba(0, 0, 0, 0.2); 
+    --font-family: 'Arial', sans-serif; 
+    --font-size: 16px;
 }
 
 body {
-    background: linear-gradient(to bottom right, var(--bg-color), var(--bg-color));
+    background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: 'Arial', sans-serif;
+    font-family: var(--font-family);
+    font-size: var(--font-size);
     margin: 0;
     padding: 20px;
 }
 
-.container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    background: var(--card-bg);
-}
-
-.app-title {
+header {
     text-align: center;
-    font-size: 2.5em;
     margin-bottom: 20px;
 }
 
-.search-bar {
+.search-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 20px;
 }
 
-input[type="text"] {
+input[type="text"], input[type="color"], select {
     padding: 10px;
-    width: calc(100% - 120px);
-    border: 2px solid var(--button-bg);
-    border-radius: 10px;
-    font-size: 16px;
+    margin: 5px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 4px;
+    width: calc(100% - 20px);
+    max-width: 300px; 
 }
 
 button {
-    background-color: var(--button-bg);
-    color: var(--button-color);
+    padding: 10px 15px;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
     border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.2s;
+    width: 100%; 
+    max-width: 150px; 
+    margin-top: 10px;
 }
 
 button:hover {
-    background-color: #005b5c;
-    transform: scale(1.05);
+    background-color: var(--button-hover-bg-color);
+    box-shadow: 0 2px 5px var(--dialog-shadow);
 }
 
-button:focus {
-    outline: 2px solid var(--button-bg);
-    outline-offset: 2px;
-}
-
-.loading {
-    text-align: center;
-}
-
-.current-weather {
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin-top: 20px;
-    margin-bottom: 20px;
-    background: var(--card-bg);
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    background-color: var(--card-bg-color);
+    border: 1px solid #ccc;
+    border-radius: 10px; 
+    padding: 15px;
+    margin: 10px;
+    width: calc(100% - 20px); 
+    max-width: 300px; 
+    box-shadow: 0 2px 5px var(--dialog-shadow);
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s; 
 }
 
-.current-weather:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-.forecast {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.forecast-item {
-    margin-top: 20px;
-    background: var(--card-bg);
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.forecast-item:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-.saved-cities-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+.card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .favorite-item {
-    background: var(--card-bg);
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 10px;
 }
 
-.favorite-item:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-input[type="color"] {
-    width: 60px;
-    height: 30px;
+.favorite-item button {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
     border: none;
     border-radius: 5px;
-    margin-right: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.2s;
 }
 
-.settings-dialog,
-.notification-dialog {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+.favorite-item button:hover {
+    background-color: var(--button-hover-bg-color);
+    box-shadow: 0 2px 5px var(--dialog-shadow);
+}
+
+/* Styles for the dialog buttons */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
 }
 
 .dialog-content {
-    background-color: white;
-    margin: 15% auto;
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 50%; 
+    top: 50%; 
+    transform: translate(-50%, -50%);
+    background-color: var(--dialog-bg-color);
+    color: var(--text-color);
+    border-radius: 8px;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px var(--dialog-shadow);
+    width: 90%;
+    max-width: 500px; 
 }
 
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
     cursor: pointer;
+    float: right;
+    font-size: 20px;
 }
 
-.notification-dialog p {
-    color: var(--error-color);
-    font-weight: bold;
+.dialog-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
-@media (max-width: 480px) {
-    .forecast {
-        grid-template-columns: 1fr;
+.dialog-content label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+h2 {
+    text-align: center; 
+    margin-top: 20px; 
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    input[type="text"], button {
+        width: 100%; 
+        max-width: none; 
     }
 }
